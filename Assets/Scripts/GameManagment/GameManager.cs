@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameConfiguration.Instance.CheatsEnabled && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)&& Input.GetKeyDown(KeyCode.H) && Input.GetKeyDown(KeyCode.K))
+        //作弊指令
+        if (Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.D)&& Input.GetKeyDown(KeyCode.H) && Input.GetKeyDown(KeyCode.K))
         {
             OnGameCompleted();
         }

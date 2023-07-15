@@ -12,16 +12,16 @@ public static class ResultsExporter
     /// <param name="usedCheats"></param>
     public static void WriteResultsToFile(float time, bool usedCheats)
     {
-        var outputObject = new SimpleJSON.JSONObject();
-        outputObject["completionTime"] = time;
-        outputObject["usedCheats"] = usedCheats;
+        //var outputObject = new SimpleJSON.JSONObject();
+        //outputObject["completionTime"] = time;
+        //outputObject["usedCheats"] = usedCheats;
 
-        string file = Path.Combine(Directory.GetCurrentDirectory(), GameConfiguration.Instance.OutputFile);
-        FileInfo fi = new FileInfo(file);
-        if (!fi.Directory.Exists)
-        {
-            Directory.CreateDirectory(fi.DirectoryName);
-        }
-        File.WriteAllText(file, outputObject.ToString());
+        //string file = Path.Combine(Directory.GetCurrentDirectory(), GameConfiguration.Instance.OutputFile);
+        //FileInfo fi = new FileInfo(file);
+        //if (!fi.Directory.Exists)
+        //{
+        //    Directory.CreateDirectory(fi.DirectoryName);
+        //}
+        //File.WriteAllText(file, outputObject.ToString());
     }
 }

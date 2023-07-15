@@ -17,12 +17,14 @@ public class CardDeck : MonoBehaviour
 
     private CardAnchor[] ColumnAnchors;
     private System.Random Random;
+    private System.Random Random2;
 
     List<PlayingCard> Cards;
+    private int bak_seed;
 
     private void Start()
     {
-        Random = new System.Random(GameConfiguration.Instance.RNGSeed);
+
 
         audioSource = GetComponent<AudioSource>();
         Assert.IsNotNull(audioSource);
@@ -40,7 +42,26 @@ public class CardDeck : MonoBehaviour
         // stop previous deal if it's still happening
         audioSource.Stop();
         StopAllCoroutines();
-
+        Random2 = new System.Random();
+        bak_seed = Random2.Next(100000000, 999999999);
+        Random = new System.Random(bak_seed);
+        // destroy cards from previous game, if there are any
+        var oldCards = FindObjectsOfType<PlayingCard>();
+        foreach (PlayingCard card in oldCards)
+        {
+            Destroy(card.gameObject);
+        }
+        // create a new deck and deal
+        GenerateDeck();
+        ShuffleDeck();
+        StartCoroutine(Deal());
+    }
+    public void ReStartGame()
+    {
+        // stop previous deal if it's still happening
+        audioSource.Stop();
+        StopAllCoroutines();
+        Random = new System.Random(bak_seed);
         // destroy cards from previous game, if there are any
         var oldCards = FindObjectsOfType<PlayingCard>();
         foreach (PlayingCard card in oldCards)
@@ -53,6 +74,7 @@ public class CardDeck : MonoBehaviour
         ShuffleDeck();
         StartCoroutine(Deal());
     }
+
 
     private void GenerateDeck()
     {

@@ -7,7 +7,7 @@ public class ColumnAnchor : CardAnchor
 {
     [Tooltip("Vertical distance between two stacked cards. Measured as percent of screen height")]
     [SerializeField] private float CardStackingOffset = 0.05f;
-
+    private float FixOffset = 0.7f;
     private float UnitOffset => (CardStackingOffset * Screen.height);
 
     public override bool CanAttachCard(PlayingCard card)
@@ -37,6 +37,6 @@ public class ColumnAnchor : CardAnchor
     public override Vector3 GetAttachmentPosition(PlayingCard card)
     {
         int cardNumber = card.transform.GetSiblingIndex();
-        return transform.position + (Vector3.down * UnitOffset * cardNumber);
+        return transform.position + (Vector3.down * UnitOffset * cardNumber * FixOffset);
     }
 }

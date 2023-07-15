@@ -6,13 +6,13 @@
 /// </summary>
 public class GameConfiguration : MonoBehaviour
 {
-    //[SerializeField] private TextAsset JSONConfig = default;
+    //[SerializeField] private TextAsset JSONConfig = default;true
 
     public static GameConfiguration Instance;
 
     public Color HoverEnabledColor { get; private set; } = Color.green;
     public Color HoverDisabledColor { get; private set; } = Color.red;
-    public bool CheatsEnabled { get; private set; } = false;
+    public bool CheatsEnabled { get; private set; } = true;
     public int RNGSeed { get; private set; } = 0;
     //public string OutputFile { get; private set; } = "results.json";
 

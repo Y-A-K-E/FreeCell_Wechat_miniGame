@@ -76,7 +76,8 @@ public class GameManager : MonoBehaviour
             rb.AddTorque(Random.Range(-5000f, 5000f));
             rb.gravityScale = 50f;
         }
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
+        print("执行延时函数"); 
         EndingScreen.SetActive(true);
     }
 }

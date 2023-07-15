@@ -74,13 +74,32 @@ public class PlayingCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             cardColor = Color.red;
         }
+        string cardRankName = Rank.ToUIString();
+        string cardSuitName = Suit.ToUIString();
+        string cardContent = Rank.ToUIString() + "" + Suit.ToUIString();
 
-        string cardContent = Rank.ToUIString() + "\n" + Suit.ToString();
-
+        int i = 0;
         foreach (Text textElement in transform.GetComponentsInChildren<Text>())
         {
-            textElement.text = cardContent;
-            textElement.color = cardColor;
+            i++;
+            if (i == 1)
+            {
+                textElement.text = cardRankName;
+                textElement.color = cardColor;
+                textElement.fontSize = 18;
+            }
+            else if (i == 2)
+            {
+                textElement.text = cardSuitName;
+                textElement.color = cardColor;
+                textElement.fontSize = 48;
+            }
+            else {
+                textElement.text = cardSuitName;
+                textElement.color = cardColor;
+                textElement.fontSize = 22;
+            }
+
         }
     }
 

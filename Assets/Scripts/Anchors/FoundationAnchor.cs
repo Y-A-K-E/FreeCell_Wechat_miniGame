@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Drawing;
+using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
@@ -14,7 +15,17 @@ public class FoundationAnchor : CardAnchor
     public override void OnStart()
     {
         base.OnStart();
-        GetComponentInChildren<Text>().text = Suit.ToString();
+
+        UnityEngine.Color cardColor = UnityEngine.Color.black;
+        if (Suit == CardSuit.DIAMOND || Suit == CardSuit.HEART)
+        {
+            cardColor = UnityEngine.Color.red;
+        }
+
+        GetComponentInChildren<Text>().text = Suit.ToUIString();
+        GetComponentInChildren<Text>().fontSize = 45;
+        GetComponentInChildren<Text>().color = cardColor;
+
 
         gameManager = FindObjectOfType<GameManager>();
         Assert.IsNotNull(gameManager, "FoundationAnchor requires a GameManager in the scene");
